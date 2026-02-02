@@ -72,8 +72,15 @@ def generate_launch_description():
     args.append(
         launch.actions.DeclareLaunchArgument(
             name="com_port",
-            default_value="/dev/ttyUSB0",
+            default_value="/tmp/ttyUR",
             description="Port for communicating with Robotiq hardware",
+        )
+    )
+    args.append(
+        launch.actions.DeclareLaunchArgument(
+            name="use_fake_hardware",
+            default_value="false",
+            description="Flag for communicating with Robotiq Fake hardware",
         )
     )
 
@@ -83,7 +90,8 @@ def generate_launch_description():
             " ",
             LaunchConfiguration("model"),
             " ",
-            "use_fake_hardware:=false",
+            "use_fake_hardware:=",
+            LaunchConfiguration("use_fake_hardware"),
             " ",
             "com_port:=",
             LaunchConfiguration("com_port"),

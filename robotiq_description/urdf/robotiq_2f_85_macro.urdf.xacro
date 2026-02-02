@@ -40,6 +40,8 @@
                 gripper_closed_position="${gripper_closed_position}"/>
         </xacro:if>
 
+      <xacro:unless value="${include_ros2_control}">
+
         <link name="${prefix}robotiq_85_base_link">
             <visual>
                 <geometry>
@@ -304,5 +306,8 @@
             <origin xyz="-0.00563134 0.0 0.04718515" rpy="0 0 0" />
             <mimic joint="${prefix}robotiq_85_left_knuckle_joint" />
         </joint>
+       </xacro:unless>
     </xacro:macro>
+   
+
 </robot>
